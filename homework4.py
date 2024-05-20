@@ -29,11 +29,12 @@ print(immutable_var)
 '''
 mutable_list = [1, 2, 3, 4, 5, 'string', 2.45, True]
 
-mutable_list[1] = 345 # Изменили объект кортежа на другой объект
+mutable_list[1] = 345 # Изменили объект cписка на другой объект
 print(mutable_list)
-mutable_list.append("False") # Добавили в конец кортежа
+mutable_list.append("False") # Добавили в конец список
 print(mutable_list)
-mutable_list.remove('string') # Удалили объект из кортежа
+mutable_list.remove('string') # Удалили объект из списка
 print(mutable_list)
+
 
 
