@@ -22,9 +22,11 @@
 
 grades = [[5, 3, 3, 5, 4], [2, 2, 2, 3], [4, 5, 5, 2], [4, 4, 3], [5, 5, 5, 4, 5]]
 students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
+sort_students = sorted(students)
+
 clovar = {}
 
-for i, student in enumerate(students):
+for i, student in enumerate(sort_students):
     clovar[student] = sum(grades[i]) / len(grades[i])
 
 print(clovar)
