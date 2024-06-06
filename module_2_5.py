@@ -16,16 +16,22 @@
 
 def get_matrix(n, m, value):
     matrix = []
-    for a in n:
-        matrix.append([a][a])
-        print(matrix)
-        for b in m:
-            matrix.append([b][value])
+    for a in range(n):
+        matrix.append([])
+        for b in range(m):
+            matrix[a].append(value)
     return matrix
 
-result1 = get_matrix(2, 2,10)
+result1 = get_matrix(2, 2, 10)
+result2 = get_matrix(3, 5, 42)
+result3 = get_matrix(4, 2, 13)
 print(result1)
-#print(get_matrix(2, 2,10))
+print(result2)
+print(result3)
+
+
+
+
 
 
 
@@ -37,3 +43,33 @@ print(result1)
 print(result2)
 print(result3)
 '''
+
+# students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
+# students_s = sorted(students)
+# print(students_s)
+# numbers = [1, 2, 3, 4, 5]
+# primes = []
+# not_primes = []
+#
+# def is_prime(num):
+#   """
+#   Функция проверки простого числа.
+#   """
+#   if num <= 1:
+#     return False
+#   for i in range(2, int(num*0.5) + 1):
+#     if num % i == 0:
+#       return False
+#   return True
+#
+# for number in numbers:
+#
+#   if is_prime(number):
+#     primes.append(number)
+#   elif number == 1:
+#     continue
+#   else:
+#     not_primes.append(number)
+#
+# print(f"Простые числа: {primes}")
+# print(f"Не простые числа: {not_primes}")
