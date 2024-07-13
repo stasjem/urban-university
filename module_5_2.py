@@ -27,5 +27,5 @@ class House:
 my_house = House()
 print(f"Начальное количество этажей: {my_house.numberOfFloors}")
 
-my_house.setNewNumberOfFloors(10)
-my_house.setNewNumberOfFloors(20)
+my_house.setNewNumberOfFloors(5)
+my_house.setNewNumberOfFloors(9)
