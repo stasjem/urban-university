@@ -40,7 +40,10 @@ eat(self, food) - метод, где food - это параметр, прини�
 
 
 class Animal:
-    pass
+    def __init__(self):
+        self.alive = True #(живой)
+        self.fed = False #(накормленный)
+    #pass
 
 class Plant:
     pass
