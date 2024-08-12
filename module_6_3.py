@@ -55,4 +55,32 @@ I train, eat, sleep, and repeat
 
 '''
 
+class Horse:
+    x_distance = 0 #- пройденный путь.
+    sound = 'Frrr' #- звук, который издаёт лошадь.
+
+    def __init__(self, dx):
+        self.dx = dx
+
+    def run(self, dx): #, где dx - изменение дистанции, увеличивает x_distance на dx.
+
+
+class Eagle:
+    y_distance = 0 #- высота полёта
+    sound = 'I train, eat, sleep, and repeat' #- звук, который издаёт орёл(отсылка)
+
+    def __init__(self, dy):
+        self.dx = dy
+
+    def fly(self, dy): # где dy - изменение дистанции, увеличивает y_distance на dy.
+
+
+class Pegasus(Horse, Eagle):
+
+    def __init__(self, dx, dy):
+        super.__init__(dx,dy)
+
+    def move(self, dx, dy):
+
+    def get_pos(self):
 
