@@ -63,6 +63,8 @@ class Horse:
         self.dx = dx
 
     def run(self, dx): #, где dx - изменение дистанции, увеличивает x_distance на dx.
+        self.dx = dx
+        self.dx += self.x_distance
 
 
 class Eagle:
@@ -73,14 +75,30 @@ class Eagle:
         self.dx = dy
 
     def fly(self, dy): # где dy - изменение дистанции, увеличивает y_distance на dy.
+        self.dy = dy
+        self.dy += self.y_distance
 
 
 class Pegasus(Horse, Eagle):
 
     def __init__(self, dx, dy):
-        super.__init__(dx,dy)
+        super().__init__(dx,dy)
 
     def move(self, dx, dy):
+        super().run(dx)
+        super().fly(dy)
 
     def get_pos(self):
+        return super().x_distance, super().y_distance
 
+
+
+p1 = Pegasus()
+
+print(p1.get_pos())
+p1.move(10, 15)
+print(p1.get_pos())
+p1.move(-5, 20)
+print(p1.get_pos())
+
+p1.voice()
