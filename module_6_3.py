@@ -63,8 +63,7 @@ class Horse:
         self.dx = dx
 
     def run(self, dx): #, где dx - изменение дистанции, увеличивает x_distance на dx.
-        self.dx = dx
-        self.dx += self.x_distance
+        self.x_distance += dx
 
 
 class Eagle:
@@ -72,24 +71,29 @@ class Eagle:
     sound = 'I train, eat, sleep, and repeat' #- звук, который издаёт орёл(отсылка)
 
     def __init__(self, dy):
-        self.dx = dy
+        self.dy = dy
 
     def fly(self, dy): # где dy - изменение дистанции, увеличивает y_distance на dy.
         self.dy = dy
-        self.dy += self.y_distance
+        self.y_distance += dy
 
 
 class Pegasus(Horse, Eagle):
 
-    def __init__(self, dx, dy):
-        super().__init__(dx,dy)
+    def __init__(self, dx=0, dy=0):
+        Eagle.__init__(self, dy)
+        Horse.__init__(self, dx)
 
     def move(self, dx, dy):
-        super().run(dx)
-        super().fly(dy)
+        Horse.run(self, dx)
+        Eagle.fly(self, dy)
+
 
     def get_pos(self):
-        return super().x_distance, super().y_distance
+        return self.x_distance, self.y_distance
+
+    def voice(self):
+        print(f"{Eagle.sound}, {Horse.sound}")
 
 
 
@@ -102,3 +106,11 @@ p1.move(-5, 20)
 print(p1.get_pos())
 
 p1.voice()
+
+
+'''
+(0, 0)
+(10, 15)
+(5, 35)
+I train, eat, sleep, and repeat
+'''
