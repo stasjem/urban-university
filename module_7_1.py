@@ -61,9 +61,22 @@ Spaghetti, 3.4, Groceries
 '''
 
 class Product:
-    name = '' #название продукта (строка).
-    weight = '' #общий вес товара (дробное число) (5.4, 52.8 и т.п.).
-    category = '' #категория товара (строка).
+    name = '123' #название продукта (строка).
+    weight = '1234' #общий вес товара (дробное число) (5.4, 52.8 и т.п.).
+    category = '12345' #категория товара (строка).
+
+    def __init__(self, name, weight, category):
+        self.name = name
+        self.weight = weight
+        self.category = category
+
+        file = open('products.txt', 'r')
+        file.read(f'{self.name}, {self, weight}, {self.category}')
+        file.close()
+
+        file = open('products.txt', 'a')
+        file.write(f'{self.name}, {self,weight}, {self.category}')
+        file.close()
 
     def __str__(self, name, weight, category):
         self.name = name
@@ -75,11 +88,23 @@ class Product:
 class Shop:
     __file_name = 'products.txt'
 
+    def __init__(self, name, weight, category):
+        self.name = name
+        self.weight = weight
+        self.category = category
+        file = open('products.txt', 'a')
+        file.write(f'{self.name}, {self,weight}, {self.category}')
+        file.close()
+
     def get_products(self):
-        pass
+        file = open(self.__file_name, 'r')
+        file.read()
+        file.close()
 
     def add(self, *products):
-        pass
+        file = open(self.__file_name, 'a')
+        file.write()
+        file.close()
 
 
 
