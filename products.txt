@@ -1,0 +1,1 @@
+Potato, (<__main__.Product object at 0x000001D51B128FD0>, 50.5), VegetablesSpaghetti, (<__main__.Product object at 0x000001D51B129010>, 3.4), GroceriesPotato, (<__main__.Product object at 0x000001D51B1290D0>, 5.5), Vegetables

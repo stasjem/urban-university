@@ -60,6 +60,11 @@ Spaghetti, 3.4, Groceries
 
 '''
 
+from pprint import pprint
+import logging
+
+logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w")
+
 class Product:
     name = '123' #название продукта (строка).
     weight = '1234' #общий вес товара (дробное число) (5.4, 52.8 и т.п.).
@@ -70,41 +75,60 @@ class Product:
         self.weight = weight
         self.category = category
 
-        file = open('products.txt', 'r')
-        file.read(f'{self.name}, {self, weight}, {self.category}')
-        file.close()
 
-        file = open('products.txt', 'a')
-        file.write(f'{self.name}, {self,weight}, {self.category}')
-        file.close()
+       #  file = open('products.txt', 'r')
+       # # file.read(f'{self.name}, {self, weight}, {self.category}')
+       #  file.read()
+       #  file.close()
+        # pprint('1')
+        # pprint(file.read())
+        # pprint('2')
+        #
+        # file = open('products.txt', 'a')
+        # file.write(f'{self.name}, {self,weight}, {self.category}')
+        # file.close()
+    # self.__st
 
-    def __str__(self, name, weight, category):
-        self.name = name
-        self.weight = weight
-        self.category = category
+    def __str__(self):
+        # self.name = name
+        # self.weight = weight
+        # self.category = category
+        print('123445')
+        print(f'{self.name},{self.weight},{self.category}')
         return f'{self.name},{self.weight},{self.category}'
 
 
 class Shop:
     __file_name = 'products.txt'
 
-    def __init__(self, name, weight, category):
-        self.name = name
-        self.weight = weight
-        self.category = category
-        file = open('products.txt', 'a')
-        file.write(f'{self.name}, {self,weight}, {self.category}')
-        file.close()
+    def __init__(self):
+        logging.info("An INFO")
+    # def __init__(self, name, weight, category):
+    #     self.name = name
+    #     self.weight = weight
+    #     self.category = category
+    #     file = open('products.txt', 'a')
+    #     file.write(f'{self.name}, {self,weight}, {self.category}')
+    #     file.close()
 
     def get_products(self):
-        file = open(self.__file_name, 'r')
-        file.read()
-        file.close()
+        with open(self.__file_name,'r')  as file:
+            products = file.read()
+            print(products)
+            pprint(products)
+
+        # file = open(self.__file_name, 'r')
+        # file.read()
+        # file.close()
 
     def add(self, *products):
-        file = open(self.__file_name, 'a')
-        file.write()
-        file.close()
+        set_products=self.get_products()
+        with open(self.__file_name, 'a') as file:
+            products in products
+
+        # file = open(self.__file_name, 'a')
+        # file.write(f'{self.name},{self.weight},{self.category}')
+        # file.close()
 
 
 
