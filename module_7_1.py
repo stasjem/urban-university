@@ -63,7 +63,7 @@ Spaghetti, 3.4, Groceries
 from pprint import pprint
 import logging
 
-logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w")
+logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w",format="%(asctime)s %(levelname)s %(message)s")
 
 class Product:
     name = '123' #название продукта (строка).
