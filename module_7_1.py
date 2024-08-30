@@ -60,85 +60,50 @@ Spaghetti, 3.4, Groceries
 
 '''
 
-from pprint import pprint
-import logging
-
-logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w",format="%(asctime)s %(levelname)s %(message)s")
 
 class Product:
-    name = '123' #название продукта (строка).
-    weight = '1234' #общий вес товара (дробное число) (5.4, 52.8 и т.п.).
-    category = '12345' #категория товара (строка).
-
     def __init__(self, name, weight, category):
-        self.name = name
-        self.weight = weight
-        self.category = category
-
-
-       #  file = open('products.txt', 'r')
-       # # file.read(f'{self.name}, {self, weight}, {self.category}')
-       #  file.read()
-       #  file.close()
-        # pprint('1')
-        # pprint(file.read())
-        # pprint('2')
-        #
-        # file = open('products.txt', 'a')
-        # file.write(f'{self.name}, {self,weight}, {self.category}')
-        # file.close()
-    # self.__st
+        self.name = name  # Название продукта
+        self.weight = weight  # Вес продукта
+        self.category = category  # Категория продукта
 
     def __str__(self):
-        # self.name = name
-        # self.weight = weight
-        # self.category = category
-        print('123445')
-        print(f'{self.name},{self.weight},{self.category}')
-        return f'{self.name},{self.weight},{self.category}'
+        return f'{self.name}, {self.weight}, {self.category}'
 
 
 class Shop:
-    __file_name = 'products.txt'
-
     def __init__(self):
-        logging.info("An INFO")
-    # def __init__(self, name, weight, category):
-    #     self.name = name
-    #     self.weight = weight
-    #     self.category = category
-    #     file = open('products.txt', 'a')
-    #     file.write(f'{self.name}, {self,weight}, {self.category}')
-    #     file.close()
+        self.__file_name = 'products.txt'  # Имя файла, где будут храниться продукты
 
     def get_products(self):
-        with open(self.__file_name,'r')  as file:
-            products = file.read()
-            print(products)
-            pprint(products)
-
-        # file = open(self.__file_name, 'r')
-        # file.read()
-        # file.close()
+        try:
+            with open(self.__file_name, 'r') as file:
+                products = file.read()
+        except FileNotFoundError:
+            products = ''
+        return products
 
     def add(self, *products):
-        set_products=self.get_products()
+        existing_products = self.get_products().splitlines()
+
         with open(self.__file_name, 'a') as file:
-            products in products
+            for product in products:
+                product_str = str(product)
+                if any(product.name in line for line in existing_products):
+                    print(f'Продукт {product.name} уже есть в магазине')
+                else:
+                    file.write(product_str + '\n')
 
-        # file = open(self.__file_name, 'a')
-        # file.write(f'{self.name},{self.weight},{self.category}')
-        # file.close()
 
+# Пример использования
+product1 = Product('Potato', 50.0, 'Vegetables')
+product2 = Product('Tomato', 30.5, 'Vegetables')
+product3 = Product('Apple', 20.0, 'Fruits')
 
+shop = Shop()
 
-s1 = Shop()
-p1 = Product('Potato', 50.5, 'Vegetables')
-p2 = Product('Spaghetti', 3.4, 'Groceries')
-p3 = Product('Potato', 5.5, 'Vegetables')
+# Добавляем продукты в магазин
+shop.add(product1, product2, product3)
 
-print(p2) # __str__
-
-s1.add(p1, p2, p3)
-
-print(s1.get_products())
+# Пытаемся добавить дублирующий продукт
+shop.add(product1)
