@@ -31,6 +31,7 @@ print(third_result)
 Успехов!
 '''
 
+
 first_strings = ['Elon', 'Musk', 'Programmer', 'Monitors', 'Variable']
 second_strings = ['Task', 'Git', 'Comprehension', 'Java', 'Computer', 'Assembler']
 
@@ -38,17 +39,10 @@ second_strings = ['Task', 'Git', 'Comprehension', 'Java', 'Computer', 'Assembler
 first_result = [len(string) for string in first_strings if len(string) >= 5]
 print(first_result)
 
-second_result = []
-for i in first_strings:
-    for u in second_strings:
-        if len(i) == len(u):
-            second_result.append((i,u))
+second_result = [(one, second) for one in first_strings for second in second_strings if len(one) == len(second)]
 print(second_result)
 
-third_result = {}
-for i in first_strings + second_strings:
-    if len(i) % 2 == 0:
-        third_result[i] = len(i)
+third_result = {i: len(i) for i in first_strings + second_strings if len(i) % 2 == 0}
 print(third_result)
 
 
