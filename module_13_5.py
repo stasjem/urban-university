@@ -13,7 +13,7 @@ bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
-button = KeyboardButton(text = 'Расчитать')
+button = KeyboardButton(text = 'Рассчитать')
 button2 = KeyboardButton(text = 'Информация')
 kb.row(button, button2)
 # kb.row kb.insert
@@ -26,7 +26,7 @@ class UserState(StatesGroup):
 
 
 
-@dp.message_handler(text = 'Расчитать')
+@dp.message_handler(text = 'Рассчитать')
 async def set_age(message):
     await message.answer("Введите свой возраст:")
     await UserState.age.set()
@@ -47,7 +47,8 @@ async def set_weight(message, state):
 async def send_calories(message, state):
     await state.update_data(weight=message.text)
     data = await state.get_data()
-    result = 10 * int(data['weight']) + 6.25 * int(data['growth']) + 5 * int(data['age']) + 5
+    #result = 10 * int(data['weight']) + 6.25 * int(data['growth']) + 5 * int(data['age']) + 5
+    result = 10 * int(data['weight']) + 6.25 * int(data['growth']) + 5 * int(data['age']) - 161
     await message.answer(f"Ваша норма калорий {result}:")
     await state.finish()
 
